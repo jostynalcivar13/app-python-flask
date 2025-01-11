@@ -1,0 +1,39 @@
+apiVersion: '2019-12-01'  # La versión de la API de Azure Container Instances
+location: eastus  # Cambia a tu región deseada
+name: mi-grupo-recursos  # Nombre del grupo de contenedores (debe ser único)
+properties:
+  containers:
+  - name: app  # Nombre del contenedor de tu aplicación Flask
+    properties:
+      image: miacr.azurecr.io/app-flask:latest  # Imagen de tu aplicación
+      environmentVariables:
+        - name: DATABASE_URL
+          value: postgresql://postgres:admin123@db:5432/sistema_matricula
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGb: 1.5
+      ports:
+        - port: 5000
+  - name: db  # Nombre del contenedor de la base de datos PostgreSQL
+    properties:
+      image: postgres:latest  # Imagen de PostgreSQL
+      environmentVariables:
+        - name: POSTGRES_USER
+          value: postgres  # Usuario de PostgreSQL
+        - name: POSTGRES_PASSWORD
+          value: admin123  # Contraseña de PostgreSQL
+        - name: POSTGRES_DB
+          value: sistema_matricula  # Nombre de la base de datos
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGb: 1.5
+      ports:
+        - port: 5432  # Puerto de PostgreSQL
+  ipAddress:
+    type: Public
+    ports:
+      - port: 5000  # Puerto expuesto para tu aplicación Flask
+  osType: Linux
+  restartPolicy: Always

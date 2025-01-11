@@ -1,6 +1,6 @@
-projectKey=app
+projectKey=pruebas
 serverUrl=http://localhost:9000
 serverVersion=10.6.0.92116
-dashboardUrl=http://localhost:9000/dashboard?id=app
-ceTaskId=dd7e92ba-5159-4777-a51f-8e1e859d2349
-ceTaskUrl=http://localhost:9000/api/ce/task?id=dd7e92ba-5159-4777-a51f-8e1e859d2349
+dashboardUrl=http://localhost:9000/dashboard?id=pruebas
+ceTaskId=45b9bf2a-5a3d-4c2f-bffe-6946a7a058d9
+ceTaskUrl=http://localhost:9000/api/ce/task?id=45b9bf2a-5a3d-4c2f-bffe-6946a7a058d9
